@@ -15,6 +15,21 @@
   /*
   一个人: name:"Tom", age: 12
    */
+  //  * 适用场景: 起始时不确定对象内部数据
+
+  // 先创建空Object对象,
+//    var p = new Object()
+    var p = {}
+
+    // 再动态添加属性/方法
+    p.name = "Tom"
+    p.age = 12
+    p.setName = function (name) {
+        this.name = "Jack"
+    }
+
+    console.log(p.name,p.age);
+    console.log(p)
 
 </script>
 </body>

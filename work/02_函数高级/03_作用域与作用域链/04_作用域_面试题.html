@@ -11,6 +11,7 @@
    */
   var x = 10;
   function fn() {
+      // 10 在当前函数作用域的执行上下文对象中没有 x 属性,则向上一级即全局作用域中找
     console.log(x);
   }
   function show(f) {

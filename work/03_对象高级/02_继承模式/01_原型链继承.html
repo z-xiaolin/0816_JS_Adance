@@ -19,6 +19,30 @@
     1. 子类型的原型为父类型的一个实例对象
 -->
 <script type="text/javascript">
+    //方式1: 原型链继承
+    function Supper(name,age) {
+        this.name = name
+        this.age = age
+    }
+    Supper.prototype.showName = function (name) {
+        console.log("showName()",name);
+    }
+    function Sub(name,age) {
+        this.name = name
+        this.age = age
+    }
+
+    Sub.prototype = new Supper()
+    Sub.prototype.constructor = Sub
+
+    Sub.prototype.showAge = function (age) {
+        console.log("showAge()",age);
+    }
+
+    var s = new Sub("Tom",20)
+    console.log(s);
+    s.showAge(30)
+    console.log(s.age)
 
 </script>
 </body>

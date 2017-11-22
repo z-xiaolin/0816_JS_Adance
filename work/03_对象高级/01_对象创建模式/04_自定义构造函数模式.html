@@ -13,6 +13,31 @@
   * 问题: 每个对象都有相同的数据, 浪费内存
 -->
 <script type="text/javascript">
+    // 自定义构造函数, 通过new创建对象
+    // 创建 人的构造函数
+    function Person(name,age) {
+        this.name = name
+        this.age = age
+        this.setName = function (name) {
+            this.name = name
+        }
+    }
+    // 创建人的实例对象
+    var p1 = new Person("Tony",20)
+    console.log(p1,p1 instanceof Person); // true Person 类型
+    p1.setName("Bob")
+    console.log(p1.name);
+
+    // 2.创建一个狗的构造函数
+    function Dog(name) {
+        this.name = name
+        this.setName = function (name) {
+            this.name = name
+        }
+    }
+    // 创建一个 狗的实例对象
+    var d1 = new Dog("大黄")
+    console.log(d1,d1 instanceof Dog); // true  Dog 类型
 
 </script>
 </body>

@@ -11,13 +11,16 @@
    */
 
   var fn = function () {
-    console.log(fn)
+    console.log(fn) //  返回fn的函数 function () { console.log(fn)}
   }
   fn()
 
   var obj = {
     fn2: function () {
       console.log(fn2)
+        // 报错 fn2为变量，当前函数作用域中没有，在全局中找，全局中没有，
+        //  而是在obj对象中，是obj对象的属性
+        // 应该 obj.fn2 来调用
     }
   }
   obj.fn2()

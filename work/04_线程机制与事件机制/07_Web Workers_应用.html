@@ -15,6 +15,42 @@
 在分线程计算: 不会阻塞主线程
 -->
 <script type="text/javascript">
+    /* TODO 主线程计算 */
+    // 创建 fibonacci 数列
+    function fibonacci(number) {
+        return number <= 2 ? 1 : (fibonacci(number - 1) + fibonacci(number - 2))
+    }
+    // 获取input 标签的输入的number值
+    var numberInput = document.getElementById("number")
+    var number = numberInput.value*1 // 转换为Number类型
+    // 为 btn1 绑定点击事件
+    document.getElementById('btn1').onclick  = function () {
+        // 调用函数进行计算
+        alert(fibonacci(number))
+    }
+
+    /* TODO 分线程 计算 */
+    // 获取input 标签的输入的number值
+    var numberInput = document.getElementById("number")
+    document.getElementById('btn2').onclick  = function () {
+        var number = numberInput.value*1 // 将字符串 转换为Number类型
+        
+        // 引入 分线程的 js 文件
+        var worker = new Worker("worker.js")
+        // 主线程向分线程发送消息（数据）
+        worker.postMessage(number)
+        console.log("主线程向分线程发送消息",number);
+        
+        // 主线程接收分线程返回的消息（数据）
+        worker.onmessage = function (event) {
+            // 获取返回的数据
+            var result = event.data
+            console.log("主线程接收分线程返回的消息",result);
+            alert(result)
+        }
+    }
+
+
 </script>
 </body>
 

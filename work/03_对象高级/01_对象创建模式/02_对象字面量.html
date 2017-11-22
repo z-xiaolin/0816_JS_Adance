@@ -12,6 +12,32 @@
   * 问题: 如果创建多个对象, 有重复代码
 -->
 <script type="text/javascript">
+    //  * 适用场景: 起始时对象内部数据是确定的
+    //使用{}创建对象, 同时指定属性/方法
+
+    // 创建第一个对象
+    var p1 = {
+        name:"Tom",
+        age:12,
+        gender:"male",
+        setName:function (name) {
+            this.name = name
+        }
+    }
+    console.log(p1.name,p1.age);
+    console.log(p1)
+
+    // 创建第二个对象
+    var p2 = {
+        name:"Bob",
+        age:10,
+        setName:function (name) {
+            this.name = name
+        }
+    }
+    console.log(p2.name,p2.age);
+    console.log(p2);
+
 </script>
 </body>
 </html>

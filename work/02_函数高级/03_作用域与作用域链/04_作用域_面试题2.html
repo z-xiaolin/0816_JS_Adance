@@ -17,7 +17,8 @@
 
   var obj = {
     fn2: function () {
-      console.log(fn2)
+      console.log(fn2) // 报错 fn2 is not defined “fn2不是变量，而是obj的属性”
+      // console.log(this.fn2)
     }
   }
   obj.fn2()

@@ -9,9 +9,30 @@
 1. instanceof是如何判断的?
   * 表达式: A instanceof B
   * 如果B函数的显式原型对象在A对象的原型链上, 返回true, 否则返回false
+  * 即：看 A 是不是 B的实例，如果是则返回true，不是则返回false
 2. Function是通过new自己产生的实例
 -->
 <script type="text/javascript">
+    // 所有函数都是Function的实例, 包括它自己
+    console.log(Function.prototype===Function.__proto__)  // true
+    console.log(Function.prototype, Object.prototype)
+    console.log(Function.prototype.__proto__ === Object.prototype) // true
+
+    //案例1
+    function Foo() {  }
+    var f1 = new Foo();
+    console.log(f1 instanceof Foo); // true
+    // 所有new出来的实例对象 都是 Object对象的 实例
+    console.log(f1 instanceof Object); // true
+    // 函数对象的实例对象 都不是 Function 的实例
+    console.log(f1 instanceof Function) // false
+
+    //案例2
+    console.log(Object instanceof Function)  // true
+    console.log(Object instanceof Object) // true
+    console.log(Function instanceof Object) // true
+    console.log(Function instanceof Function) // true
+    console.log(Object instanceof  Foo); // false
 
 </script>
 </body>
