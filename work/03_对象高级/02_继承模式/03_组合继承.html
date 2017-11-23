@@ -11,7 +11,31 @@
 2. 利用super()借用父类型构建函数初始化相同属性
 -->
 <script type="text/javascript">
+    /* TODO 方式3: 原型链+借用构造函数的组合继承 */
+    function Person(name,age,address) {
+        this.name = name
+        this.age = age
+        this.address = address
+    }
+    Person.prototype.showAddress = function () {
+        console.log(this.name+"住址是："+this.address);
+    }
+    
+    function Programmer(name, age, address,price) {
+        Person.call(this, name, age, address)
+        this.price = price
+    }
+    Programmer.prototype = new Person()
+    Programmer.prototype.constructor = Programmer
+    Programmer.prototype.showprice = function () {
+        console.log(this.name+ "的price是："+ this.price);
+    }
 
+    var pgm = new Programmer("Jack", 25, "北京",20000)
+    console.log(pgm.name, pgm.age, pgm.address); // 实例调用父类型的属性
+    pgm.showprice()
+    pgm.showAddress() // 实例可以调用父类型的方法
+    
 </script>
 </body>
 </html>

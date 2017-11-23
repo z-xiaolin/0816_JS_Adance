@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>03_工厂模式</title>
+</head>
+<body>
+<!--
+方式三: 工厂模式
+  * 套路: 通过工厂函数动态创建对象并返回
+  * 适用场景: 需要创建多个对象
+  * 问题: 对象没有一个具体的类型, 都是Object类型
+-->
+<script type="text/javascript">
+    // TODO 方式三: 工厂模式
+    // 创建 “人” 的工厂函数
+    function createPerson(name, age, address) {
+        var worker = {
+            name,
+            age,
+            address,
+            setAddress (address){
+                this.address = address
+            }
+        }
+        return worker
+    }
+    
+    var w1 = createPerson("小明",12,"中国")
+    console.log(w1);
+    console.log(typeof w1); //object
+    w1.setAddress("德国")
+    console.log(w1.address);
+    
+    // 创建 “猫” 的工厂函数
+    function createCat(name, age, address) {
+        var cat = {
+            name,
+            age,
+            address,
+            setName (name){
+                this.name = name
+            }
+        }
+        return cat
+    }
+    
+    var cat1 = createCat("波斯猫",4, "荷兰")
+    console.log(cat1);
+    console.log(typeof cat1); // object
+    cat1.setName("小花")
+    console.log(cat1.name);
+    
+</script>
+</body>
+</html>

@@ -13,8 +13,32 @@
   3. 在子类型构造函数中调用父类型构造
 2. 关键:
   1. 在子类型构造函数中通用super()调用父类型构造函数
+  2.在子类型的实例中可以调用父类的属性
 -->
 <script type="text/javascript">
+    // TODO 方式2: 借用构造函数继承(假的)
+    function Super(name, age, gender) {
+        this.name = name
+        this.age = age
+        this.gender = gender
+    }
+    Supper.prototype.showName = function () {
+        console.log(this.name);
+    }
+
+    function Sub(name, age, gender, payment) {
+        // 在子类型构造函数中调用父类型构造
+        Super.call(this, name, age, gender)
+        this.payment = payment
+    }
+    Sub.prototype.showPayment = function () {
+        console.log(this.name + "的薪资是：" + this.payment)
+    }
+
+    var sub1 = new Sub("Bob",23,"男",12300)
+    console.log(sub1.name,sub1.age); // 实例中可以调用父类的属性
+    sub1.showPayment()
+    sub1.showName() // 实例中不可以调用父类的方法
 
 </script>
 </body>
