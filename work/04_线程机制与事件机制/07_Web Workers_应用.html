@@ -22,9 +22,9 @@
     }
     // 获取input 标签的输入的number值
     var numberInput = document.getElementById("number")
-    var number = numberInput.value*1 // 转换为Number类型
     // 为 btn1 绑定点击事件
     document.getElementById('btn1').onclick  = function () {
+        var number = numberInput.value*1 // 转换为Number类型
         // 调用函数进行计算
         alert(fibonacci(number))
     }
