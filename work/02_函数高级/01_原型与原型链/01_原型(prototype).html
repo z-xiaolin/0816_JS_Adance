@@ -13,6 +13,18 @@
   * 作用: 函数的所有实例对象自动拥有原型中的属性(方法)
 -->
 <script type="text/javascript">
+    function Foo() {
+        console.log("这是一个函数。。");
+    }
+    Foo()
+    console.log(Foo.prototype);// Object {constructor: function}
+    console.log(Foo.prototype.constructor); // function foo() { }
+    Foo.prototype.show = function () {
+        console.log("这是原型对象中添加的方法。。");
+    }
+    var f1 = new Foo()
+    f1.show()
+
 
 </script>
 </body>

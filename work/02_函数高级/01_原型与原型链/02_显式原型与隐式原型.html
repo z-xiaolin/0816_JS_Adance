@@ -16,7 +16,20 @@
   * 程序员能直接操作显式原型, 但不能直接操作隐式原型(ES6之前)
 -->
 <script type="text/javascript">
-
+    function Foo() {
+        
+    }
+    var foo1 = new Foo()
+    
+    //Object {constructor: function}  Object {constructor: function}
+    console.log(Foo.prototype,foo1.__proto__); 
+    
+    Foo.prototype.setName = function (name) {
+        this.name = name
+    }
+    foo1.setName("jack")
+    console.log(foo1.name);
+    
 </script>
 </body>
 </html>
